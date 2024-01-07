@@ -5,8 +5,10 @@ import FilterTasks from '../../components/FilterTasks/FilterTasks'
 
 export const Home = () => (
   <div className={styles.home}>
-    <h1 className={styles.homeTitle}>Release Overview</h1>
-    <FilterTasks />
+    <div className={styles.homeHeader}>
+      <h1 className={styles.homeTitle}>Release Overview</h1>
+      <FilterTasks />
+    </div>
     <Board />
   </div>
 )

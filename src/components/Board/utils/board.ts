@@ -1,4 +1,4 @@
-import { BoardSections, Status, Task } from '../types'
+import { BoardSections, Task } from '../types'
 import { BOARD_SECTIONS } from '../constants'
 import { getTasksByStatus } from './task'
 
@@ -6,7 +6,7 @@ export const initializeBoard = (tasks: Task[]) => {
   const boardSections: BoardSections = {}
 
   Object.keys(BOARD_SECTIONS).forEach((boardSectionKey) => {
-    boardSections[boardSectionKey] = getTasksByStatus(tasks, boardSectionKey as Status)
+    boardSections[boardSectionKey] = getTasksByStatus(tasks, boardSectionKey)
   })
 
   return boardSections

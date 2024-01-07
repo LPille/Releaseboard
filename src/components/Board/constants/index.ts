@@ -1,5 +1,5 @@
 export const BOARD_SECTIONS = {
-  'Not Started': 'Not Started',
-  'In Progress': 'In Progress',
-  Released: 'Released',
+  1: 'Not Started',
+  2: 'In Progress',
+  3: 'Released',
 }
