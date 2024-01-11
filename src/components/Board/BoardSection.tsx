@@ -9,13 +9,15 @@ import styles from './Board.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import cx from 'classnames'
+
 type BoardSectionProps = {
   id: string
   title: string
   tasks: Task[]
+  handleAddTask: (section: any) => void
 }
 
-const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
+const BoardSection = ({ id, title, tasks, handleAddTask }: BoardSectionProps) => {
   const [isHovering, setIsHovering] = useState(false)
   const { setNodeRef } = useDroppable({
     id,
@@ -29,14 +31,14 @@ const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
           {tasks.map((task) => (
             <Box key={task.id} sx={{ mb: 2 }}>
               <SortableTaskItem id={task.id}>
-                <TaskItem task={task} />
+                <TaskItem isOverlay={false} task={task} />
               </SortableTaskItem>
             </Box>
           ))}
         </div>
       </SortableContext>
 
-      <div className={cx(styles.newCardButton, { [styles.isHover]: isHovering })}>
+      <div className={cx(styles.newCardButton, { [styles.isHover]: isHovering })} onClick={() => handleAddTask(id)}>
         {' '}
         <FontAwesomeIcon icon={faPlus} />
       </div>

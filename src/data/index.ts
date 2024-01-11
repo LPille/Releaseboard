@@ -24,7 +24,7 @@ export const INITIAL_TASKS: Task[] = [
     status: 1,
     platform: 'mobile',
   },
-  {
+  /*   {
     id: uuidv4(),
     title: 'Zoom',
     description: 'Desc 3',
@@ -80,5 +80,5 @@ export const INITIAL_TASKS: Task[] = [
     description: 'Desc 4',
     status: 2,
     platform: 'web',
-  },
+  }, */
 ]

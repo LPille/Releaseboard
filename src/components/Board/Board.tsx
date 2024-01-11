@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   useSensors,
   useSensor,
@@ -25,17 +25,21 @@ import cn from 'classnames'
 import { useBoard } from '../../context'
 
 const Board = () => {
-  const { tasks, boardSections, setBoardSections, filters, setFilters } = useBoard()
+  const { tasks, setTasks, boardSections, setBoardSections, filters, setFilters, handleAddTask } = useBoard()
 
   const initialBoardSections = initializeBoard(INITIAL_TASKS)
   //const [boardSections, setBoardSections] = useState<BoardSectionsType>(initialBoardSections)
   const [activeTaskId, setActiveTaskId] = useState<null | string>(null)
 
   const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    }),
+  /*   useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    })
+    }) */
   )
 
   const handleDragStart = ({ active }: DragStartEvent) => {
@@ -60,7 +64,6 @@ const Board = () => {
           // Find the indexes for the items
           const activeIndex = activeItems.findIndex((item) => item.id === active.id)
           const overIndex = overItems.findIndex((item) => item.id !== over?.id)
-
           return {
             ...boardSection,
             [activeContainer]: [...boardSection[activeContainer].filter((item) => item.id !== active.id)],
@@ -86,10 +89,40 @@ const Board = () => {
 
       const activeIndex = boardSections[activeContainer].findIndex((task) => task.id === active.id)
       const overIndex = boardSections[overContainer].findIndex((task) => task.id === over?.id)
+      //console.log('=== activeIndex ', activeIndex, ' overIndex ', overIndex)
 
       if (activeIndex !== overIndex) {
+        /*           setTasks((task) => {
+          if (task) {
+            return {
+              ...task, []
+              
+            }
+          }})  */
+        //console.log('=== new ', arrayMove(boardSections[overContainer], activeIndex, overIndex)) // Over Index can be -1 when list is empty
+        //const index = overIndex === -1 ? 0 : overIndex
+        //console.log('=== id ', boardSections[overContainer][overIndex]?.id) //
+        /*         setTasks((task) => {
+          if (task) {
+            return task.map((t) => {
+              if (t.id === boardSections[overContainer][overIndex]?.id) {
+                return {
+                  ...t,
+                  status: overContainer as any,
+                }
+              }
+              return t
+            })
+          }
+          return task
+        }) */
+
         setBoardSections((boardSection) => {
           if (boardSection) {
+            //console.log('=== arrayMove ', arrayMove(boardSection[overContainer], activeIndex, overIndex)); // Over Index can be -1 when list is empty
+            //console.log('=== id ', arrayMove(boardSection[overContainer], activeIndex, overIndex)[overIndex].title);
+            //console.log('=== id ',boardSection[overContainer][overIndex].id ); //
+
             return {
               ...boardSection,
               [overContainer]: arrayMove(boardSection[overContainer], activeIndex, overIndex),
@@ -124,10 +157,17 @@ const Board = () => {
           {boardSections &&
             Object.keys(boardSections).map((boardSectionKey) => (
               <div className={cn('col-3')} key={boardSectionKey}>
-                <BoardSection id={boardSectionKey} title={boardSectionKey} tasks={boardSections[boardSectionKey]} />
+                <BoardSection
+                  id={boardSectionKey}
+                  title={boardSectionKey}
+                  tasks={boardSections[boardSectionKey]}
+                  handleAddTask={handleAddTask}
+                />
               </div>
             ))}
-          <DragOverlay dropAnimation={dropAnimation}>{task ? <TaskItem task={task} /> : null}</DragOverlay>
+          <DragOverlay dropAnimation={dropAnimation} style={{}}>
+            {task ? <TaskItem isOverlay={true} task={task} /> : null}
+          </DragOverlay>
         </div>
       </DndContext>
     </div>

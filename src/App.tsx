@@ -1,12 +1,15 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Home } from './pages/Home'
+import { ReleaseOverview } from './pages/ReleaseOverview'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
   return (
     <BrowserRouter>
+      <Toaster position="top-right" />
+
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<ReleaseOverview />} />
       </Routes>
     </BrowserRouter>
   )

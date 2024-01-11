@@ -3,16 +3,18 @@ import React, { createContext, useState, useEffect } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 //import { getAllRecipes, addRecipe, deleteRecipe, updateRecipe } from '../services/axios'; // Update the path
 import { nanoid } from 'nanoid'
-import { Task, Filter, BoardSections } from '../components/Board/types'
+import { Task, Filter, BoardSections, Status } from '../components/Board/types'
 import { initializeBoard } from '../components/Board/utils/board'
 import { FILTERS, INITIAL_TASKS } from '../data'
 import { v4 as uuidv4 } from 'uuid'
+import { getTaskById, getTasksByStatus } from '../components/Board/utils/task'
 
 // Filter can be platform web or mobile
 
 interface BoardContextProps {
   tasks: Task[]
-  handleAddTask: () => void
+  setTasks: React.Dispatch<React.SetStateAction<Task[]>>
+  handleAddTask: (section: any) => void
   boardSections: BoardSections | undefined
   filters: Filter[]
   setFilters: React.Dispatch<React.SetStateAction<Filter[]>>
@@ -38,8 +40,7 @@ export const BoardProvider = (props: { children: React.ReactNode }) => {
     fetchTasks()
   }, [])
 
-  const handleAddTask = async () => {
-    console.log('Add new Tasks')
+  const handleAddTask = async (section: any) => {
     const task: Task = {
       id: uuidv4(),
       title: 'Custom Subtitles Style',
@@ -47,14 +48,50 @@ export const BoardProvider = (props: { children: React.ReactNode }) => {
       status: 2,
       platform: 'web',
     }
+    // add a new task to a specific board section
+    setBoardSections((boardSection) => {
+      if (!boardSection) return
+      return {
+        ...boardSection,
+        [section as number]: [...boardSection[section as number], task],
+      }
+    })
 
     //const newRecipe = await addRecipe(newRecipeData);
     setTasks([...tasks, task])
+
     //setBoardSections([...recipes, newRecipeData])
   }
 
+  useEffect(() => {
+    // add Task to correct Board Section
+    if (!boardSections) return
+    const newBoardSections: BoardSections = {}
+
+    Object.keys(boardSections).forEach((boardSectionKey) => {
+      newBoardSections[boardSectionKey] = getTasksByStatus(tasks, boardSectionKey)
+    })
+
+    /*     const newBoardSections = boardSections?.map((boardSection: { tasks: any[] }) => {
+      const newTasks = boardSection.tasks.map((task) => {
+        const taskFromTasks = getTaskById(tasks, task.id)
+        if (taskFromTasks) {
+          return taskFromTasks
+        }
+        return task
+      })
+      return { ...boardSection, tasks: newTasks }
+    }
+    ) */
+
+    // add a task to a board section
+
+    //setBoardSections(newBoardSections)
+  }, [tasks])
+
   const value: BoardContextProps = {
     tasks: tasks,
+    setTasks: setTasks,
     boardSections: boardSections,
     filters: filters,
     handleAddTask: handleAddTask,

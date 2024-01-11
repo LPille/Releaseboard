@@ -9,7 +9,6 @@ type FilterTasksProps = {}
 
 const FilterTasks = ({}: FilterTasksProps) => {
   const [isHovering, setIsHovering] = useState(false)
-
   const { tasks, boardSections, filters, setFilters } = useBoard()
 
   // show all possible Filter
