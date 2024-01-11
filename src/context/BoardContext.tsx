@@ -3,11 +3,11 @@ import React, { createContext, useState, useEffect } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 //import { getAllRecipes, addRecipe, deleteRecipe, updateRecipe } from '../services/axios'; // Update the path
 import { nanoid } from 'nanoid'
-import { Task, Filter, BoardSections, Status } from '../components/Board/types'
-import { initializeBoard } from '../components/Board/utils/board'
+import { Task, Filter, BoardSections, Status } from '../components/constants/types'
+import { initializeBoard } from '../components/utils/board'
 import { FILTERS, INITIAL_TASKS } from '../data'
 import { v4 as uuidv4 } from 'uuid'
-import { getTaskById, getTasksByStatus } from '../components/Board/utils/task'
+import { getTaskById, getTasksByStatus } from '../components/utils/task'
 
 // Filter can be platform web or mobile
 

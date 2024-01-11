@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import Box from '@mui/material/Box'
 import { useDroppable } from '@dnd-kit/core'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
-import { Task } from './types'
-import TaskItem from './TaskItem'
-import SortableTaskItem from './SortableTaskItem'
-import styles from './Board.module.scss'
+import { Task } from '../../constants/types'
+import BoardItem from '../BoardItem/BoardItem'
+import SortableBoardItem from '../SortableBoardItem/SortableBoardItem'
+import styles from './BoardSection.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import cx from 'classnames'
@@ -30,9 +30,9 @@ const BoardSection = ({ id, title, tasks, handleAddTask }: BoardSectionProps) =>
         <div ref={setNodeRef}>
           {tasks.map((task) => (
             <Box key={task.id} sx={{ mb: 2 }}>
-              <SortableTaskItem id={task.id}>
-                <TaskItem isOverlay={false} task={task} />
-              </SortableTaskItem>
+              <SortableBoardItem id={task.id}>
+                <BoardItem isOverlay={false} task={task} />
+              </SortableBoardItem>
             </Box>
           ))}
         </div>

@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
-import { Filter, Task } from '../components/Board/types'
+import { Filter, Task } from '../components/constants/types'
 
 export const FILTERS: Filter[] = [
   {

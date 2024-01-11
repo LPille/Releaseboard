@@ -7,7 +7,7 @@ type SortableTaskItemProps = {
   id: string
 }
 
-const SortableTaskItem = ({ children, id }: SortableTaskItemProps) => {
+const SortableBoardItem = ({ children, id }: SortableTaskItemProps) => {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id })
 
   const style = {
@@ -23,4 +23,4 @@ const SortableTaskItem = ({ children, id }: SortableTaskItemProps) => {
   )
 }
 
-export default SortableTaskItem
+export default SortableBoardItem

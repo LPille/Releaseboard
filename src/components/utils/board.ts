@@ -1,4 +1,4 @@
-import { BoardSections, Task } from '../types'
+import { BoardSections, Task } from '../constants/types'
 import { BOARD_SECTIONS } from '../constants'
 import { getTasksByStatus } from './task'
 

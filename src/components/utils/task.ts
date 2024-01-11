@@ -1,4 +1,4 @@
-import { Task, Status } from '../types'
+import { Task, Status } from '../constants/types'
 
 export const getTasksByStatus = (tasks: Task[], status: string) => {
   return tasks.filter((task) => task.status.toString() === status)

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from './FilterTasks.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cx from 'classnames'
-import { Task, Filter, BoardSections as BoardSectionsType } from '../../components/Board/types'
+import { Task, Filter, BoardSections as BoardSectionsType } from '../constants/types'
 import { useBoard } from '../../context'
 
 type FilterTasksProps = {}

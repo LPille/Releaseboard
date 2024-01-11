@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   useSensors,
   useSensor,
   PointerSensor,
-  KeyboardSensor,
   DndContext,
   closestCorners,
   DragEndEvent,
@@ -13,13 +12,13 @@ import {
   DropAnimation,
   defaultDropAnimation,
 } from '@dnd-kit/core'
-import { sortableKeyboardCoordinates, arrayMove } from '@dnd-kit/sortable'
+import { arrayMove } from '@dnd-kit/sortable'
 import { INITIAL_TASKS } from '../../data/index'
-import { BoardSections as BoardSectionsType } from './types'
-import { getTaskById } from './utils/task'
-import { findBoardSectionContainer, initializeBoard } from './utils/board'
-import BoardSection from './BoardSection'
-import TaskItem from './TaskItem'
+import { BoardSections as BoardSectionsType } from '../constants/types'
+import { getTaskById } from '../utils/task'
+import { findBoardSectionContainer, initializeBoard } from '../utils/board'
+import BoardSection from './BoardSection/BoardSection'
+import BoardItem from './BoardItem/BoardItem'
 import styles from './Board.module.scss'
 import cn from 'classnames'
 import { useBoard } from '../../context'
@@ -166,7 +165,7 @@ const Board = () => {
               </div>
             ))}
           <DragOverlay dropAnimation={dropAnimation} style={{}}>
-            {task ? <TaskItem isOverlay={true} task={task} /> : null}
+            {task ? <BoardItem isOverlay={true} task={task} /> : null}
           </DragOverlay>
         </div>
       </DndContext>

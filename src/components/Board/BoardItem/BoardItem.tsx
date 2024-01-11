@@ -1,16 +1,16 @@
-import { Task } from './types'
-import styles from './Board.module.scss'
+import { Task } from '../../constants/types'
+import styles from './BoardItem.module.scss'
 import cn from 'classnames'
 import { toast } from 'react-hot-toast'
 import { ChangeEvent, useRef, useState } from 'react'
-import useAutosizeTextArea from '../../hooks/useAutosizeTextArea'
+import useAutosizeTextArea from '../../../hooks/useAutosizeTextArea'
 
 type TaskItemProps = {
   task: Task
   isOverlay: boolean | null
 }
 
-const TaskItem = ({ task, isOverlay = false }: TaskItemProps) => {
+const BoardItem = ({ task, isOverlay = false }: TaskItemProps) => {
   const [isHoverCard, setIsHoverCard] = useState<Boolean>(false)
   const [value, setValue] = useState(task.title || "");
   const [isEditing, setIsEditing] = useState(false);
@@ -108,4 +108,4 @@ const TaskItem = ({ task, isOverlay = false }: TaskItemProps) => {
   )
 }
 
-export default TaskItem
+export default BoardItem
