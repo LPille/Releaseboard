@@ -13,10 +13,8 @@ import {
   defaultDropAnimation,
 } from '@dnd-kit/core'
 import { arrayMove } from '@dnd-kit/sortable'
-import { INITIAL_TASKS } from '../../data/index'
-import { BoardSections as BoardSectionsType } from '../constants/types'
 import { getTaskById } from '../utils/task'
-import { findBoardSectionContainer, initializeBoard } from '../utils/board'
+import { findBoardSectionContainer } from '../utils/board'
 import BoardSection from './BoardSection/BoardSection'
 import BoardItem from './BoardItem/BoardItem'
 import styles from './Board.module.scss'
@@ -24,10 +22,7 @@ import cn from 'classnames'
 import { useBoard } from '../../context'
 
 const Board = () => {
-  const { tasks, setTasks, boardSections, setBoardSections, filters, setFilters, handleAddTask } = useBoard()
-
-  const initialBoardSections = initializeBoard(INITIAL_TASKS)
-  //const [boardSections, setBoardSections] = useState<BoardSectionsType>(initialBoardSections)
+  const { tasks, boardSections, setBoardSections, filters, setFilters, handleAddTask, locked } = useBoard()
   const [activeTaskId, setActiveTaskId] = useState<null | string>(null)
 
   const sensors = useSensors(
@@ -35,10 +30,7 @@ const Board = () => {
       activationConstraint: {
         distance: 8,
       },
-    }),
-  /*   useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    }) */
+    })
   )
 
   const handleDragStart = ({ active }: DragStartEvent) => {
@@ -118,9 +110,9 @@ const Board = () => {
 
         setBoardSections((boardSection) => {
           if (boardSection) {
-            //console.log('=== arrayMove ', arrayMove(boardSection[overContainer], activeIndex, overIndex)); // Over Index can be -1 when list is empty
-            //console.log('=== id ', arrayMove(boardSection[overContainer], activeIndex, overIndex)[overIndex].title);
-            //console.log('=== id ',boardSection[overContainer][overIndex].id ); //
+            console.log('=== arrayMove ', arrayMove(boardSection[overContainer], activeIndex, overIndex)) // Over Index can be -1 when list is empty
+            console.log('=== id ', arrayMove(boardSection[overContainer], activeIndex, overIndex)[overIndex])
+            console.log('=== id ', boardSection[overContainer][overIndex])
 
             return {
               ...boardSection,
@@ -156,16 +148,11 @@ const Board = () => {
           {boardSections &&
             Object.keys(boardSections).map((boardSectionKey) => (
               <div className={cn('col-3')} key={boardSectionKey}>
-                <BoardSection
-                  id={boardSectionKey}
-                  title={boardSectionKey}
-                  tasks={boardSections[boardSectionKey]}
-                  handleAddTask={handleAddTask}
-                />
+                <BoardSection id={boardSectionKey} title={boardSectionKey} tasks={boardSections[boardSectionKey]} />
               </div>
             ))}
           <DragOverlay dropAnimation={dropAnimation} style={{}}>
-            {task ? <BoardItem isOverlay={true} task={task} /> : null}
+            {task ? <BoardItem section={''} isOverlay={true} task={task} /> : null}
           </DragOverlay>
         </div>
       </DndContext>

@@ -1,17 +1,17 @@
 .card{
   border-radius: 8px;
-  //padding: 18px;
   position: relative;
+  transition: all 0.3s ease-in-out;
 
   &.web{
-    background: #A9C7AA;
+    background: var(--web-color);
   }
   &.mobile{
-    background: #F0C987;
+    background: var(--mobile-color);
   }
 
   .cardTitle{
-    color: #1E1E1E;
+    color: var(--primary-color);
     font-family: 'Nunito Sans', sans-serif;
     font-size: 14px;
     font-style: normal;
@@ -19,53 +19,6 @@
     line-height: normal;
     margin: 0px;
   }
-
-}
-
-
-.actions{
-  position: absolute;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  gap: 24px;
-  transition: all 0.2s ease-in-out;
-  opacity: 0;
-  top: 0;
-  right: 0px;
-
-  &.hover{
-    opacity: 1;
-
-  }
-  .action{
-    display: flex;
-    padding: 12px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    flex-direction: column;
-    display: flex;
-    gap: 8px;
-    align-items: center;
-
-    background: #f9394b;
-    border-radius: 0px 8px 0px 12px;
-
-    &:hover{
-      background: #c41728;
-      svg{
-        transition: all 0.2s ease-in-out;
-
-        transform: scale(1.1);
-      }
-    }
-    p{
-      color: #ffffff;
-      font-size: 16px;
-      font-weight: 300;
-    }
-  } 
 }
 
 
@@ -74,9 +27,10 @@
   display: flex;
   position: relative;
   padding: 18px;
+  min-height: 64px;
 
   textarea:focus, textarea:hover{
-    border-bottom: 1px solid #244614;
+    //border-bottom: 1px solid #244614;
   }
 
   &.isEmpty{
@@ -96,9 +50,12 @@
     padding: 0px 0px;
     overflow: hidden;
     align-self: center;
+    color: #1E1E1E;
     &.hover{
       border-bottom: 1px solid #244614;
     }
+
+
   }
 
   &.name textarea{
@@ -110,14 +67,64 @@
     font-weight: 700;
     line-height: normal;
   }
-  &.description textarea{
-  }
-  &.ingredients textarea{
-  }
-  &.instructions {
-    align-items: center;
-    width: 100%;
-    textarea{
-    }
-  }
 }
+
+
+.actions{
+  position: absolute;
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+  top: 0;
+  right: 0px;
+
+  height: 100%;
+  justify-content: space-between;
+
+  &.hover{
+    opacity: 1;
+  }
+  .action{
+    display: flex;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    flex-direction: column;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: #3f3f3f91;
+    border-radius: 0px 8px 0px 12px;
+    height: 100%;
+    place-content: center;
+    &:hover{
+      background: #3f3f3fea;
+      svg{
+        transition: all 0.2s ease-in-out;
+        transform: scale(1.1);
+      }
+    }
+    &.rotateIcon{
+      border-radius: 0px 8px 0px 0px;
+      width: 32px;
+      svg{
+        fill: #ffffff;
+      }
+    }
+    
+    &.deleteIcon{
+      border-radius: 0px 0px 8px 0px;
+      width: 32px;
+   
+    }
+    p{
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 300;
+    }
+  } 
+}
+

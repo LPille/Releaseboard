@@ -1,3 +1,4 @@
+import { STATUS } from './../components/constants/types'
 import { v4 as uuidv4 } from 'uuid'
 import { Filter, Task } from '../components/constants/types'
 
@@ -6,13 +7,13 @@ export const FILTERS: Filter[] = [
     type: 1,
     name: 'Web',
     active: true,
-    color: '#A9C7AA',
+    color: 'var(--web-color)',
   },
   {
     type: 2,
     name: 'Mobile',
     active: true,
-    color: '#F0C987',
+    color: 'var(--mobile-color)',
   },
 ]
 
@@ -21,16 +22,17 @@ export const INITIAL_TASKS: Task[] = [
     id: uuidv4(),
     title: 'Recording helper finding position  based on video assets: subs, logo, panels',
     description: 'Desc 2',
-    status: 1,
-    platform: 'mobile',
+    status: { id: 1, name: 'Not started' },
+    platform: { id: 2, name: 'mobile' },
   },
-  /*   {
+  {
     id: uuidv4(),
     title: 'Zoom',
     description: 'Desc 3',
-    status: 1,
-    platform: 'web',
+    status: { id: 1, name: 'Not started' },
+    platform: { id: 1, name: 'web' },
   },
+  /* 
   {
     id: uuidv4(),
     title: 'Custom Subtitles Style',

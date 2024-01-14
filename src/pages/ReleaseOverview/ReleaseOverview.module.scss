@@ -1,12 +1,12 @@
 .home{
-  background: #F0F2F8;
+  background: #ffffff;
   .homeHeader{
     position: fixed;
 
     .homeTitle{
       color: #1E1E1E;
       font-family: 'Nunito Sans', sans-serif;
-      font-size: 180px;
+      font-size: 98px;
       font-style: normal;
       font-weight: 900;
       line-height: 100%;
@@ -16,5 +16,23 @@
       //position: fixed;
       z-index: 1;
     }
+  }
+}
+
+.lockIcon{
+  position: absolute;
+  display: flex;
+  right: 30px;
+  top: 30px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+  svg{
+    width: 26px;
+    height: 26px;
+    fill: #1E1E1E;
   }
 }
