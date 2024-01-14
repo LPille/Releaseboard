@@ -82,8 +82,8 @@ export const BoardProvider = (props: { children: React.ReactNode }) => {
   useEffect(() => {
     //console.log('=================  After ');
 
-    console.log('=== BS ', boardSections)
-    console.log('=== tasks ', tasks)
+    //console.log('=== BS ', boardSections)
+    //console.log('=== tasks ', tasks)
   }, [boardSections, tasks])
 
   const handleUpdateTask = async (newTask: Task) => {
