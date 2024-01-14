@@ -46,18 +46,6 @@ const BoardItem = ({ section, task, isOverlay = false }: TaskItemProps) => {
     setIsHoverCard(false)
   }
 
-  /*   const clickHandleText = () => {
-    console.log('clickHandleText')
-    toast.success('Task changed successfully!', {
-      icon: '👏',
-      style: {
-        borderRadius: '10px',
-        background: '#333333',
-        color: '#fff',
-      },
-    })
-  } */
-
   const clickDelete = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation()
 
