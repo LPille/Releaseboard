@@ -19,15 +19,21 @@ code {
   --main-font: 'Nunito Sans', sans-serif;
 /*   
 --web-color: #707F9E;
-*/  
 --web-color: #7884a2;
+*/ 
+--web-color: #525c74;
+
 
 /*   
 
 --mobile-color: #EACDA3;
 --mobile-color: #cfa66b;
-*/  
 --mobile-color: #ffe0b4;
+
+*/  
+--mobile-color: #d0ac78;
+
+
 
   
   

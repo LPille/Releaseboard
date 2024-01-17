@@ -50,7 +50,11 @@
     padding: 0px 0px;
     overflow: hidden;
     align-self: center;
-    color: #1E1E1E;
+
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 400;
+
     &.hover{
       border-bottom: 1px solid #244614;
     }
