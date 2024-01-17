@@ -9,7 +9,7 @@ function App() {
       <Toaster position="top-right" />
 
       <Routes>
-        <Route path="/" element={<ReleaseOverview />} />
+        <Route path="/Releaseboard" element={<ReleaseOverview />} />
       </Routes>
     </BrowserRouter>
   )
