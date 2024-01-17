@@ -47,6 +47,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn run build",
+    "format": "prettier --write 'src/**/*.js'",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
