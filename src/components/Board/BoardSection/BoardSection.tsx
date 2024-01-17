@@ -8,6 +8,7 @@ import SortableBoardItem from '../SortableBoardItem/SortableBoardItem'
 import styles from './BoardSection.module.scss'
 import cx from 'classnames'
 import { useBoard } from '../../../context'
+import { hourglass, finish, progress } from '../../../assets/icons/icons'
 
 type BoardSectionProps = {
   id: string
@@ -53,7 +54,12 @@ const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
+      <div className={styles.boardHeader}>
+      <div className={styles.icon}>
+        {id === '1' ? hourglass : id === '2' ? progress : id === '3' ? finish : null}
+      </div>
       <h2 className={styles.title}>{getBoardSectionName()}</h2>
+      </div>
       <SortableContext id={id} items={filteredTasks} strategy={verticalListSortingStrategy} disabled={locked}>
         <div ref={setNodeRef}>
           {filteredTasks.map((task) => (

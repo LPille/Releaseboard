@@ -7,26 +7,44 @@
   transition: all 0.3s ease-in-out;
 
   &.firstSection{
-    background: linear-gradient(to right, #E8E8E8, #E0E5E1);
+    background: linear-gradient(to right, #F7EFE9, #E5E5DC);
   }
   &.secondSection{
-    background: linear-gradient(to right, #DDE4DE, #D1DDD2);
+    background: linear-gradient(to right, #E2E3DA, #D0D9CC);
   }
   &.thirdSection{
-    background: linear-gradient(to right, #CEDBD0, #C1D4C4);
+    background: linear-gradient(to right, #CBD6C9, #B9CCBC);
   }
 
-  .title{
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+  .boardHeader{
+    display: flex;
+    align-items: center;
     margin-top: 24px;
     margin-bottom: 36px;
     text-align: center;
     text-align-last: center;
-    letter-spacing: -2.4px;
+    gap: 8px;
+    justify-content: center;
+
+    .icon{
+      svg{
+        fill: #25292f;
+        width: 24px;
+        height: 24px;
+      }
+
+    }
+
+    .title{
+      color: #25292f;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin: 0px;
+    
+    }
   }
 
   .newCardButton{

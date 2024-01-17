@@ -5,7 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #F0F2F8;
+/*   background: #F0F2F8;
+ */  background: #D8D8D8;
+
 }
 
 code {
@@ -15,8 +17,20 @@ code {
 
 :root{
   --main-font: 'Nunito Sans', sans-serif;
-  --web-color: #707F9E;
-  --mobile-color: #EACDA3;
+/*   
+--web-color: #707F9E;
+*/  
+--web-color: #7884a2;
+
+/*   
+
+--mobile-color: #EACDA3;
+--mobile-color: #cfa66b;
+*/  
+--mobile-color: #ffe0b4;
+
+  
+  
 
   --primary-color: #1E1E1E;
   --secondary-color: #212529;
