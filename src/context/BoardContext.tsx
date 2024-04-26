@@ -65,9 +65,6 @@ export const BoardProvider = (props: { children: React.ReactNode }) => {
   }
 
   const handleDeleteTask = async (section: string, task: Task) => {
-    if (boardSections) {
-      console.log('=== delete in ', task.status.id, ' Section ', boardSections[task.status.id])
-    }
     setBoardSections((boardSection) => {
       if (!boardSection) return
       return {

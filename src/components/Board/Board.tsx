@@ -110,10 +110,6 @@ const Board = () => {
 
         setBoardSections((boardSection) => {
           if (boardSection) {
-            console.log('=== arrayMove ', arrayMove(boardSection[overContainer], activeIndex, overIndex)) // Over Index can be -1 when list is empty
-            console.log('=== id ', arrayMove(boardSection[overContainer], activeIndex, overIndex)[overIndex])
-            console.log('=== id ', boardSection[overContainer][overIndex])
-
             return {
               ...boardSection,
               [overContainer]: arrayMove(boardSection[overContainer], activeIndex, overIndex),
